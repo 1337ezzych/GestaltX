@@ -43,10 +43,19 @@ final class GestaltStore: ObservableObject {
     }
 
     func backupURLs() -> [URL] {
-        guard let folder = try? Self.backupFolder() else { return [] }
-        return (try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.contentModificationDateKey]))
-            ?.sorted { $0.lastPathComponent > $1.lastPathComponent } ?? []
+    guard let folder = try? Self.backupFolder() else {
+        return []
     }
+
+    let urls = (try? FileManager.default.contentsOfDirectory(
+        at: folder,
+        includingPropertiesForKeys: [.contentModificationDateKey]
+    )) ?? []
+
+    return urls.sorted {
+        $0.lastPathComponent > $1.lastPathComponent
+    }
+}
 
     private static func backupFolder() throws -> URL {
         let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
