@@ -2,14 +2,21 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct PlistExportDocument: FileDocument {
-    static var readableContentTypes: [UTType] { [.propertyList] }
+    static var readableContentTypes: [UTType] {
+        [.propertyList]
+    }
+
     var data: Data
 
-    init(data: Data = Data()) { self.data = data }
+    init(data: Data = Data()) {
+        self.data = data
+    }
+
     init(configuration: ReadConfiguration) throws {
         data = configuration.file.regularFileContents ?? Data()
     }
-    func fileWrapper(configuration: WriteConfiguration) throws {
+
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         FileWrapper(regularFileWithContents: data)
     }
 }
