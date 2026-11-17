@@ -1,0 +1,20 @@
+name: GestaltX
+options:
+  bundleIdPrefix: dev.gestaltx
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  GestaltX:
+    type: application
+    platform: iOS
+    sources:
+      - path: GestaltX
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.gestaltx.customizer
+        PRODUCT_NAME: GestaltX
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_CFBundleDisplayName: GestaltX
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        GENERATE_INFOPLIST_FILE: YES
