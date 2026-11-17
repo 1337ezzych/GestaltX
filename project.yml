@@ -8,7 +8,7 @@ targets:
     type: application
     platform: iOS
     sources:
-      - path: GestaltX
+      - path: 
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: dev.gestaltx.customizer
